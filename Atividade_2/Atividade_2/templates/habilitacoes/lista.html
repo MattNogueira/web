@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<h1>Habilitações Cadastradas</h1>
+
+<p>
+    <a href="{% url 'habilitacoes.insert' %}" class='btn btn-secondary'>
+        <i class='fa fa-plus'></i> Cadastrar Habilitação
+    </a>
+</p>
+
+<table class='table table-hover'>
+
+    <tr>
+        <th>CPF da Pessoa</th>
+        <th>Validade</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for h in habilitacoes %}
+
+    <tr>
+        <td>{{h.pessoa}}</td>
+        <td>{{h.validadeHab}}</td>
+        <td>
+            <a href="{% url 'habilitacoes.update' h.id %}" class='btn btn-warning'>
+                <i class='fa fa-pencil'></i>
+            </a>
+            <a href="{% url 'habilitacoes.delete' h.id %}" class='btn btn-danger' onclick="return confirm('Deseja excluir {{ h.pessoa }}?')">
+                <i class='fa fa-trash'></i>
+            </a>
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+<a href="{% url 'home' %}" class='btn btn-dark'> 
+    <i class='fa fa-arrow-left'></i>
+</a>
+
+{% endblock %}

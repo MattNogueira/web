@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<h1>Aplicação com CRUD 1</h1>
+<div>
+    <a href="{% url 'funcionarios.lista' %}" class = "btn btn-primary">Cadastro de Funcionário</a>
+
+    <a href="{% url 'departamentos.lista' %}" class = "btn btn-primary">Cadastro de Departamento</a>
+</div>
+
+{% endblock %}

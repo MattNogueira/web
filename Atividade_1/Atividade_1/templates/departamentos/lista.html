@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<h1>Departamentos Cadastrados</h1>
+
+<p>
+    <a href="{% url 'departamentos.insert' %}" class='btn btn-secondary'>
+        <i class='fa fa-plus'></i> Cadastrar Departamento
+    </a>
+</p>
+
+<table class='table table-hover'>
+
+    <tr>
+        <th>Nome</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for d in departamentos %}
+
+    <tr>
+        <td>{{d.desc}}</td>
+        <td>
+            <a href="{% url 'departamentos.update' d.id %}" class='btn btn-warning'>
+                <i class='fa fa-pencil'></i>
+            </a>
+            <a href="{% url 'departamentos.delete' d.id %}" class='btn btn-danger' onclick="return confirm('Deseja excluir {{ d.desc }}?')">
+                <i class='fa fa-trash'></i>
+            </a>
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+<a href="{% url 'home' %}" class='btn btn-dark'> 
+    <i class='fa fa-arrow-left'></i>
+</a>
+
+{% endblock %}

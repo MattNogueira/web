@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<h1>Aplicação com CRUD 3</h1>
+
+<div class='container-fluid'>
+    <a href="{% url 'corretores.lista' %}" class = "btn btn-primary">Cadastro de Corretor</a>
+
+    <a href="{% url 'telefones.lista' %}" class = "btn btn-primary">Cadastro de Telefone</a>
+
+    <a href="{% url 'regioes.lista' %}" class = "btn btn-primary">Cadastro de Região</a>
+    
+    <a href="{% url 'municipios.lista' %}" class = "btn btn-primary">Cadastro de Município</a>
+</div>
+
+{% endblock %}

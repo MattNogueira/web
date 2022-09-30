@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block conteudo %}
+<h1>{{titulo}}</h1>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <div class='form-group'>
+        <p>
+            <label>CPF:</label>
+            {{frm.cpf|add_class:'form-control'}}
+        </p>
+    </div>
+
+    <div class='form-group'>
+        <p>
+            <label>Nome:</label>
+            {{frm.nome|add_class:'form-control'}}
+        </p>
+    </div>
+
+    <div class='form-group'>
+        <p>
+            <label>Comissão:</label>
+            {{frm.comissao|add_class:'form-control'}}
+        </p>
+    </div>
+
+    <div class='form-group'>
+        <button type='submit' class='btn btn-primary'>
+            <i class='fa fa-save'></i> Salvar
+        </button>
+    </div>
+
+</form>
+
+{% endblock %}

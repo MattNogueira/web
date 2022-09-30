@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<h1>Telefones Cadastrados</h1>
+
+<p>
+    <a href="{% url 'municipios.insert' %}" class='btn btn-secondary'>
+        <i class='fa fa-plus'></i> Cadastrar Municipio
+    </a>
+</p>
+
+<table class='table table-hover'>
+
+    <tr>
+        <th>UF</th>
+        <th>Nome</th>
+        <th>Região</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for m in municipios %}
+
+    <tr>
+        <td>{{m.uf}}</td>
+        <td>{{m.nome}}</td>
+        <td>{{m.regiao}}</td>
+        <td>
+            <a href="{% url 'municipios.update' m.id %}" class='btn btn-warning'>
+                <i class='fa fa-pencil'></i>
+            </a>
+            <a href="{% url 'municipios.delete' m.id %}" class='btn btn-danger' onclick="return confirm('Deseja excluir {{ m.nome }}?')">
+                <i class='fa fa-trash'></i>
+            </a>
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+<a href="{% url 'home' %}" class='btn btn-dark'> 
+    <i class='fa fa-arrow-left'></i>
+</a>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<h1>Corretores Cadastrados</h1>
+
+<p>
+    <a href="{% url 'corretores.insert' %}" class='btn btn-secondary'>
+        <i class='fa fa-plus'></i> Cadastrar Corretor
+    </a>
+</p>
+
+<table class='table table-hover'>
+
+    <tr>
+        <th>CPF</th>
+        <th>Nome</th>
+        <th>Comissão</th>
+        <th>Telefones</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for c in corretores %}
+
+    <tr>
+        <td>{{c.cpf}}</td>
+        <td>{{c.nome}}</td>
+        <td>{{c.comissao}}</td>
+        <td>{{c.telefone.area}} {{c.telefone.numero}}</td>
+        <td>
+            <a href="{% url 'corretores.update' c.id %}" class='btn btn-warning'>
+                <i class='fa fa-pencil'></i>
+            </a>
+            <a href="{% url 'corretores.delete' c.id %}" class='btn btn-danger' onclick="return confirm('Deseja excluir {{ c.nome }}?')">
+                <i class='fa fa-trash'></i>
+            </a>
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+<a href="{% url 'home' %}" class='btn btn-dark'> 
+    <i class='fa fa-arrow-left'></i>
+</a>
+
+{% endblock %}

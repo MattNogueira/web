@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<h1>Pessoas Cadastradas</h1>
+
+<p>
+    <a href="{% url 'pessoas.insert' %}" class='btn btn-secondary'>
+        <i class='fa fa-plus'></i> Cadastrar Pessoa
+    </a>
+</p>
+
+<table class='table table-hover'>
+
+    <tr>
+        <th>CPF</th>
+        <th>Nome</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for p in pessoas %}
+
+    <tr>
+        <td>{{p.cpf}}</td>
+        <td>{{p.nome}}</td>
+        <td>
+            <a href="{% url 'pessoas.update' p.id %}" class='btn btn-warning'>
+                <i class='fa fa-pencil'></i>
+            </a>
+            <a href="{% url 'pessoas.delete' p.id %}" class='btn btn-danger' onclick="return confirm('Deseja excluir {{ p.nome }}?')">
+                <i class='fa fa-trash'></i>
+            </a>
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+<a href="{% url 'home' %}" class='btn btn-dark'> 
+    <i class='fa fa-arrow-left'></i>
+</a>
+
+{% endblock %}
